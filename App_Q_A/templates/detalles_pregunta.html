@@ -1,0 +1,25 @@
+<!-- Se indica el uso del contenido del archivo base -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2> {{ pregunta.titulo }} </h2>
+
+    <!--Renderiza preguntas registradas-->
+    {% for respuesta in pregunta.respuesta_set.all %}
+    <!--Creación de tarjeta de contenido-->
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">{{ respuesta.contenido }}</h5>
+            <p class="card-text">
+                <span style="float: left; width: 75%;">
+                    Pubicación: {{ respuesta.fecha_respuesta }}
+                </span>
+                <span style="float: left; width: 25%;">
+                    Estado: {{ respuesta.get_status_display }}
+                </span>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock content %}

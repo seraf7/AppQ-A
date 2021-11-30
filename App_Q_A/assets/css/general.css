@@ -1,0 +1,13 @@
+body {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+nav {
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+form {
+    padding: 1em 0em;
+}

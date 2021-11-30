@@ -2,7 +2,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Aquí van las preguntas </h2>
+    <!--Formulario de búsqueda-->
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+            <label for="InputSearch" class="form-label">Búsqueda de preguntas</label>
+            <input type="email" class="form-control" id="InputSearch" aria-describedby="searchHelp">
+            <div id="searchHelp" class="form-text">Busca algún tema de tu interés</div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <h2>Dale un vistazo a las preguntas</h2>
 
     <!--Renderiza preguntas registradas-->
     {% for pregunta in pregunta_list %}
@@ -18,7 +30,7 @@
                     Autor: {{ pregunta.autor }}
                 </span>
             </p>
-            <a href="#" class="btn btn-primary">Detalles</a>
+            <a href="{% url 'preguntas:detalles' pregunta.id%}" class="btn btn-primary">Detalles</a>
         </div>
     </div>
     {% endfor %}

@@ -7,5 +7,5 @@ app_name = 'preguntas'
 urlpatterns = [
     path('', views.ListaPreguntas.as_view(), name='home'),
     # Acceso mediante la PK de la pregunta
-    path('<int:pk>/', views.DetallesPregunta.as_view(), name='detalles_pregunta'),
+    path('<int:pk>/', views.DetallesPregunta.as_view(), name='detalles'),
 ]

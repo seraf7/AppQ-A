@@ -19,6 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Se define el directorio de plantillas
 TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
+# Rutas de archivos estáticos
+STATICFILES_DIRS = [
+    os.path.join(TEMPLATES_DIRS, 'media')
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 

@@ -3,4 +3,24 @@
 
 {% block content %}
     <h2>Aquí van las preguntas </h2>
+
+    <!--Renderiza preguntas registradas-->
+    {% for pregunta in pregunta_list %}
+    <!--Creación de tarjeta de contenido-->
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">{{ pregunta.titulo }}</h5>
+            <p class="card-text">
+                <span style="float: left; width: 75%;">
+                    Pubicación: {{ pregunta.fecha_publicacion }}
+                </span>
+                <span style="float: left; width: 25%;">
+                    Autor: {{ pregunta.autor }}
+                </span>
+            </p>
+            <a href="#" class="btn btn-primary">Detalles</a>
+        </div>
+    </div>
+    {% endfor %}
+
 {% endblock content %}

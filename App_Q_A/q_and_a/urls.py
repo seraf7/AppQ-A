@@ -1,6 +1,8 @@
 from . import views
 from django.urls import path
 
+app_name = 'preguntas'
+
 # Se especifican las URL de la aplicación
 urlpatterns = [
     path('', views.ListaPreguntas.as_view(), name='home'),

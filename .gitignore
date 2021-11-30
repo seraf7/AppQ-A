@@ -1,0 +1,4 @@
+*.log
+*.pot
+*.pyc
+App_Q_A/**/__pycache__

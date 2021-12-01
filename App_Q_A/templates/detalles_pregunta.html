@@ -4,6 +4,8 @@
 {% block content %}
     <h2> {{ pregunta.titulo }} </h2>
 
+    <p>{{ pregunta.detalle }}</p>
+
     <!--Renderiza preguntas registradas-->
     {% for respuesta in pregunta.respuesta_set.all %}
     <!--Creación de tarjeta de contenido-->

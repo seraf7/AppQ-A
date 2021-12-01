@@ -12,7 +12,24 @@ form {
     padding: 1em 0em;
 }
 
+button {
+    background-color: #BA8A2D !important;
+    border-color: #6E5015 !important;
+}
+
+.btn {
+    background-color: #BA8A2D !important;
+    border-color: #6E5015 !important;
+}
+
 #login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#preguntar {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -13,4 +13,6 @@ urlpatterns = [
     path('<int:pk>/', views.DetallesPregunta.as_view(), name='detalles'),
     # Página de inicio de sesión
     path('login', views.login_view, name='login'),
+    # Página de formulario de preguntas
+    path('preguntar/', views.pregunta_form, name='pregunta_form'),
 ]

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.contrib import messages
@@ -6,7 +7,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
 from django.urls import reverse_lazy
+from django.utils import timezone
 from .models import Pregunta, Respuesta
+from .forms import PreguntaForm
 
 # Vista de listado de preguntas
 class ListaPreguntas(generic.ListView):
@@ -56,3 +59,30 @@ def login_view(request):
             messages.error(request, "Datos de usuario incorrectos")
     form = AuthenticationForm()
     return render(request, 'login.html', {"login_form": form})
+
+# Vista con el formulario de pregunta
+def pregunta_form(request):
+    form = PreguntaForm
+    # Valida que se hace una petición POST con AJAX
+    if request.method == 'POST' and request.is_ajax():
+        # Recupera información del formulario
+        form  = PreguntaForm(request.POST)
+        # Verifica que la información sea valida
+        if form.is_valid():
+            # Obtiene datos de la petición
+            titulo = form.cleaned_data['titulo']
+            # Guarda los datos recibidos en un objeto pero no en la BD
+            pregunta = form.save(commit=False)
+            # Añade los campos faltantes
+            pregunta.fecha_publicacion = timezone.now()
+            pregunta.autor = request.user
+            # Se confirman los cambios en la BD
+            pregunta.save()
+            # Se devuelve un JSON con resultado exitoso
+            return JsonResponse({"titulo": titulo}, status=200)
+        else:
+            # Obtiene errores en formato JSON
+            errors = form.errors.as_json()
+            return JsonResponse({"errors": errors}, status=400)
+
+    return render(request, 'formulario_pregunta.html', {"form": form})

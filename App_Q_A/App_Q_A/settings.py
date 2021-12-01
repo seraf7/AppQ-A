@@ -23,6 +23,7 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 STATICFILES_DIRS = [
     ("media", os.path.join(BASE_DIR, 'media')),
     ("css" ,os.path.join(BASE_DIR, 'assets/css')),
+    ("js" ,os.path.join(BASE_DIR, 'assets/js')),
 ]
 
 # Quick-start development settings - unsuitable for production

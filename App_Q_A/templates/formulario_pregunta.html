@@ -1,0 +1,26 @@
+<!-- Se indica el uso del contenido del archivo base -->
+{% extends "base.html" %}
+
+{% block content %}
+    <!--Se indica renderizado de un formulario con crispy-->
+    {% load crispy_forms_tags %}
+    <div class="container-fluid mt-5 w-75" id="prguntar">
+        <h1>Haz una pregunta</h1>
+        <form method="POST" id="preguntaForm" action="{% url 'preguntas:pregunta_form' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-primary" type="submit"
+            style="margin: 1em 0em;">Publicar</button>
+        </form>
+    </div>
+
+    <!--Se carga JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!--Se agregan código de JS-->
+    {% block javascript %}
+        {% load static %}
+        <script src="{% static 'js/preguntaPOST.js' %}"></script>
+    {% endblock javascript %}
+
+{% endblock content %}

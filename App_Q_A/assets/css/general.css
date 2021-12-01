@@ -23,8 +23,8 @@ button {
     border-color: #6E5015 !important;
 }
 
-.card-link {
-    text-decoration: none;
+.card{
+    box-shadow: 0 16px 48px #E3E7EB;
 }
 
 #login {

@@ -18,22 +18,26 @@
     <h2>Dale un vistazo a las preguntas</h2>
 
     <!--Renderiza preguntas registradas-->
-    {% for pregunta in pregunta_list %}
-    <!--Creación de tarjeta de contenido-->
-    <div class="card w-75" id="{% url 'preguntas:detalles' pregunta.id %}">
-        <div class="card-body">
-            <h5 class="card-title">{{ pregunta.titulo }}</h5>
-            <p class="card-text">
-                <span style="float: left; width: 75%;">
-                    Pubicación: {{ pregunta.fecha_publicacion }}
-                </span>
-                <span style="float: left; width: 25%;">
-                    Autor: {{ pregunta.autor }}
-                </span>
-            </p>
+    <div class="col-md-9 mt-3 left">
+        {% for pregunta in pregunta_list %}
+        <!--Creación de tarjeta de contenido-->
+        <div class="card w-85" id="{% url 'preguntas:detalles' pregunta.id %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ pregunta.titulo }}</h5>
+                <p class="card-text">
+                    <span style="float: left; width: 75%;">
+                        Pubicación: {{ pregunta.fecha_publicacion }}
+                    </span>
+                    <span style="float: left; width: 25%;">
+                        Autor: {{ pregunta.autor }}
+                    </span>
+                </p>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    {% block sidebar %} {% include 'tarjeta_usuario.html' %} {% endblock sidebar %}
 
     <!--Se agregan código de JS-->
     {% block javascript %}

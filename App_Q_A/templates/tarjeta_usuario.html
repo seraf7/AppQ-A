@@ -1,0 +1,18 @@
+{% block sidebar %}
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-3 float-right position-sticky">
+    <div class="card position-sticky top-20 end-10">
+            <h5 class="card-header">Bienvenido</h5>
+        <div class="card-body">
+            {% if user.is_authenticated %}
+                <p class="card-text">Esperamos que encuentres muy bien
+                    {{ user.username }} y que puedas encontrar la información
+                    que necesitas
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock sidebar %}

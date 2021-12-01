@@ -13,23 +13,27 @@
         </form>
     {% endif %}
 
-    <!--Renderiza preguntas registradas-->
-    {% for respuesta in pregunta.respuesta_set.all %}
-    <!--Creación de tarjeta de contenido-->
-    <div class="card w-75" id="#">
-        <div class="card-body">
-            <h5 class="card-title">{{ respuesta.contenido }}</h5>
-            <p class="card-text">
-                <span style="float: left; width: 75%;">
-                    Pubicación: {{ respuesta.fecha_respuesta }}
-                </span>
-                <span style="float: left; width: 25%;">
-                    Estado: {{ respuesta.get_status_display }}
-                </span>
-            </p>
+    <div class="col-md-9 mt-3 left">
+        <!--Renderiza preguntas registradas-->
+        {% for respuesta in pregunta.respuesta_set.all %}
+        <!--Creación de tarjeta de contenido-->
+        <div class="card w-75" id="#">
+            <div class="card-body">
+                <h5 class="card-title">{{ respuesta.contenido }}</h5>
+                <p class="card-text">
+                    <span style="float: left; width: 75%;">
+                        Pubicación: {{ respuesta.fecha_respuesta }}
+                    </span>
+                    <span style="float: left; width: 25%;">
+                        Estado: {{ respuesta.get_status_display }}
+                    </span>
+                </p>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    {% block sidebar %} {% include 'tarjeta_usuario.html' %} {% endblock sidebar %}
 
     <!--Se agregan código de JS-->
     {% block javascript %}

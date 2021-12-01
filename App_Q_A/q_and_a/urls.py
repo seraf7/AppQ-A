@@ -13,6 +13,8 @@ urlpatterns = [
     path('<int:pk>/', views.DetallesPregunta.as_view(), name='detalles'),
     # Página de inicio de sesión
     path('login', views.login_view, name='login'),
+    # Página para cerrar sesión
+    path('logout', views.logout_view, name='logout'),
     # Página de formulario de preguntas
     path('preguntar/', views.pregunta_form, name='pregunta_form'),
 ]

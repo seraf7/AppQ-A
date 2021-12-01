@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
 from django.urls import reverse_lazy
@@ -34,6 +34,11 @@ class DetallesPregunta(generic.DetailView):
     model = Pregunta
     template_name = 'detalles_pregunta.html'
 
+# Vista para cerrar sesión
+def logout_view(request):
+    logout(request)
+    return redirect('preguntas:login')
+
 # Vista para inicio de sesión
 def login_view(request):
     # Valida que se haga una petción POST
@@ -51,7 +56,6 @@ def login_view(request):
             if user is not None:
                 # Liga el usuario autenticado con la sesión
                 login(request, user)
-                messages.info(request, "Inicio de sesión como " + username)
                 return redirect('preguntas:home')
             else:
                 messages.error(request, "Datos de usuario incorrectos")

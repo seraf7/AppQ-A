@@ -34,12 +34,18 @@
                           <a class="nav-link" href="{% url 'preguntas:pregunta_form' %}">Preguntar</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{% url 'preguntas:login' %}">Iniciar Sesión</a>
-                        </li>
-                        <li class="nav-item">
                           <a class="nav-link disabled">Registrarse</a>
                         </li>
                     </ul>
+                    {% if user.is_authenticated %}
+                        <form class="d-flex" method="GET" action="{% url 'preguntas:logout' %}">
+                            <button class="btn btn-outline-success">Cerrar Sesión</button>
+                        </form>
+                    {% else %}
+                        <form class="d-flex" method="GET" action="{% url 'preguntas:login' %}">
+                            <button class="btn btn-outline-success">Iniciar Sesión</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </nav>

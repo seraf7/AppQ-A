@@ -20,7 +20,7 @@
     <!--Renderiza preguntas registradas-->
     {% for pregunta in pregunta_list %}
     <!--Creación de tarjeta de contenido-->
-    <div class="card w-75">
+    <div class="card w-75" id="{% url 'preguntas:detalles' pregunta.id %}">
         <div class="card-body">
             <h5 class="card-title">{{ pregunta.titulo }}</h5>
             <p class="card-text">
@@ -31,9 +31,14 @@
                     Autor: {{ pregunta.autor }}
                 </span>
             </p>
-            <a href="{% url 'preguntas:detalles' pregunta.id%}" class="btn btn-primary">Detalles</a>
         </div>
     </div>
     {% endfor %}
+
+    <!--Se agregan código de JS-->
+    {% block javascript %}
+        {% load static %}
+        <script src="{% static 'js/indexInteraction.js' %}"></script>
+    {% endblock javascript %}
 
 {% endblock content %}

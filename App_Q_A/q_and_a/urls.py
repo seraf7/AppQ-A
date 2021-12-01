@@ -17,4 +17,6 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     # Página de formulario de preguntas
     path('preguntar/', views.pregunta_form, name='pregunta_form'),
+    # Página para crear respuestas
+    path('<int:pk>/responder/', views.respuesta_form, name='respuesta_form'),
 ]

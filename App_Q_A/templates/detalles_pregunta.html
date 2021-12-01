@@ -4,12 +4,19 @@
 {% block content %}
     <h2> {{ pregunta.titulo }} </h2>
 
-    <p>{{ pregunta.detalle }}</p>
+    <h4>{{ pregunta.detalle }}</h4>
+
+    {% if user.is_authenticated %}
+        <form class="d-grid gap-2 col-6 mx-auto justify-content-md-end"
+        method="GET" action="{% url 'preguntas:respuesta_form' pregunta.id %}">
+            <button class="btn btn-primary" type="submit">Responder</button>
+        </form>
+    {% endif %}
 
     <!--Renderiza preguntas registradas-->
     {% for respuesta in pregunta.respuesta_set.all %}
     <!--Creación de tarjeta de contenido-->
-    <div class="card w-75">
+    <div class="card w-75" id="#">
         <div class="card-body">
             <h5 class="card-title">{{ respuesta.contenido }}</h5>
             <p class="card-text">
@@ -23,5 +30,11 @@
         </div>
     </div>
     {% endfor %}
+
+    <!--Se agregan código de JS-->
+    {% block javascript %}
+        {% load static %}
+        <script src="{% static 'js/indexInteraction.js' %}"></script>
+    {% endblock javascript %}
 
 {% endblock content %}

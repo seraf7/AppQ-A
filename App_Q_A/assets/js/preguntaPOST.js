@@ -1,7 +1,7 @@
 // Se indica que la función cargará después de que el DOM este listo
 $(document).ready(function () {
     // Se atrapa el envío del formulario
-    $('#preguntaForm').submit(function (e) {
+    $('#formulario').submit(function (e) {
         // Se evita que el formulario se envie
         e.preventDefault();
         // Se crea llamada a AJAX
@@ -15,9 +15,9 @@ $(document).ready(function () {
             // Acción en caso de respuesta exitosa
             success: function (response) {
                 // Crea un mensaje emergente
-                alert("Se registró correctamente la pregunta " + response.titulo);
+                alert("Se registró correctamente el contenido " + response.valor);
                 // Limpia el formulario
-                document.getElementById("preguntaForm").reset();
+                document.getElementById("formulario").reset();
             },
             // Acción para respuesta con error
             error: function (response) {

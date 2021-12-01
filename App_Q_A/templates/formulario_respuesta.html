@@ -1,12 +1,15 @@
-<!-- Se indica el uso del contenido del archivo base -->
+<!--Se indica el uso del contenido del archivo base-->
 {% extends "base.html" %}
 
 {% block content %}
+    <h2>{{ pregunta.titulo }}</h2>
+    <p>{{ pregunta.detalle }}</p>
+
     <!--Se indica renderizado de un formulario con crispy-->
     {% load crispy_forms_tags %}
     <div class="container-fluid mt-5 w-75" id="prguntar">
-        <h1>Haz una pregunta</h1>
-        <form method="POST" id="formulario" action="{% url 'preguntas:pregunta_form' %}">
+        <h4>Contribuye con tu respuesta</h4>
+        <form method="POST" id="formulario" action="{% url 'preguntas:respuesta_form' pregunta.id %}">
             {% csrf_token %}
             {{ form|crispy }}
             <button class="btn btn-primary" type="submit"
@@ -22,5 +25,4 @@
         {% load static %}
         <script src="{% static 'js/preguntaPOST.js' %}"></script>
     {% endblock javascript %}
-
 {% endblock content %}

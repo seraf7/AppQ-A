@@ -25,6 +25,10 @@ class Respuesta(models.Model):
     pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
     status = models.IntegerField(choices=CORRECTA, default=0)
 
+    # Clase para ordenar preguntas por la más reciente
+    class Meta:
+        ordering = ['-fecha_respuesta']
+
     # Representación como cadena
     def __str__(self):
         return self.contenido

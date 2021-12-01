@@ -3,10 +3,11 @@
 
 {% block content %}
     <!--Formulario de búsqueda-->
-    <form class="row row-cols-lg-auto g-3 align-items-center">
+    <form class="row row-cols-lg-auto g-3 align-items-center"
+    method="GET" action="{% url 'preguntas:buscar' %}">
         <div class="col-12">
             <label for="InputSearch" class="form-label">Búsqueda de preguntas</label>
-            <input type="email" class="form-control" id="InputSearch" aria-describedby="searchHelp">
+            <input type="text" name="tema" class="form-control" id="InputSearch" aria-describedby="searchHelp">
             <div id="searchHelp" class="form-text">Busca algún tema de tu interés</div>
         </div>
         <div class="col-12">

@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Aplicación para formularios
+    'crispy_forms',
     # Aplicación de preguntas y respuestas
     'q_and_a.apps.QAndAConfig',
 ]

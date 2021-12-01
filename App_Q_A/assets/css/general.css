@@ -11,3 +11,14 @@ nav {
 form {
     padding: 1em 0em;
 }
+
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error_msj {
+    color: #BA8A2D;
+}

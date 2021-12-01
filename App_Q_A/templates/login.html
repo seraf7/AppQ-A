@@ -1,0 +1,26 @@
+<!-- Se indica el uso del contenido del archivo base -->
+{% extends "base.html" %}
+
+{% block content %}
+    <!--Se indica renderizado de un formulario con crispy-->
+    {% load crispy_forms_tags %}
+
+    <div class="container py-5" id="login">
+        <h1>Inicia Sesión</h1>
+        {% if messages %}
+                {% for message in messages %}
+                <p class="error_msj">{{ message }}</p>
+                {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            <button class="btn btn-primary" type="submit"
+            style="margin: 1em 0em;">Acceder</button>
+        </form>
+        <p class="text-center">¿No tienes una cuenta?
+            <a href="#">Registrarme</a>
+        </p>
+    </div>
+
+{% endblock content %}

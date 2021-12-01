@@ -62,6 +62,11 @@ def login_view(request):
 
 # Vista con el formulario de pregunta
 def pregunta_form(request):
+    # Valida si es un usuario sin autenticar
+    if request.user.is_anonymous:
+        # Usuarios no autenticados son redirigidos a página de login
+        return redirect('preguntas:login')
+
     form = PreguntaForm
     # Valida que se hace una petición POST con AJAX
     if request.method == 'POST' and request.is_ajax():

@@ -37,3 +37,7 @@ De manera alternativa, se puede indicar un puerto y dirección IP específicos p
 ```
 python3 manage.py runserver <IP>:<puerto>
 ```
+
+El usuario para realizar las pruebas de login es:
+* username: usuario1
+* password: algunusr
